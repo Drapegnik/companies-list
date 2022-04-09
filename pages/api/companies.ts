@@ -1,13 +1,28 @@
+import casual from 'casual';
+
+import { numberOfTypes } from 'data/core';
+
+import type { Company } from 'data/core';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-interface Company {
-  name: string;
-}
+type Companies = Company[];
 
-type Response = Company[];
+const total = 15;
+const companies: Companies = Array.from({ length: total }).map((_, id) => ({
+  id,
+  name: casual.company_name,
+  logoUrl: `https://robohash.org/${id}`,
+  type: casual.integer(0, numberOfTypes - 1),
+  address: {
+    city: casual.city,
+    country: casual.country,
+    lat: casual.latitude,
+    lng: casual.longitude,
+  },
+}));
 
-const companiesHandler = (req: NextApiRequest, res: NextApiResponse<Response>) => {
-  res.status(200).json([{ name: 'Test Company' }]);
+const companiesHandler = (req: NextApiRequest, res: NextApiResponse<Companies>) => {
+  res.status(200).json(companies);
 };
 
 export default companiesHandler;
