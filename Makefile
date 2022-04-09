@@ -17,3 +17,8 @@ lint:
 	npm run format
 	npm run lint
 	npm run type-check
+
+# run git-cz
+.PHONY: commit
+commit:
+	npm run commit

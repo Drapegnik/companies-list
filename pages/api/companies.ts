@@ -1,16 +1,13 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 interface Company {
-  name: string
+  name: string;
 }
 
 type Response = Company[];
 
-const companiesHandler = (
-  req: NextApiRequest,
-  res: NextApiResponse<Response>
-)=> {
-  res.status(200).json([{ name: 'Test Company' }])
-}
+const companiesHandler = (req: NextApiRequest, res: NextApiResponse<Response>) => {
+  res.status(200).json([{ name: 'Test Company' }]);
+};
 
 export default companiesHandler;
