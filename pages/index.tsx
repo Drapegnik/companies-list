@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import { fetcher } from 'lib/fetcher';
-import { CompanyCard } from 'components/company-card';
+import { CompaniesList } from 'components/companies-list';
 
 import type { Company } from 'data/core';
 import type { GetServerSideProps, NextPage } from 'next';
@@ -18,11 +18,7 @@ const Home: NextPage<Props> = ({ companies }) => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <main>
-      <ul>
-        {companies.map(c => (
-          <CompanyCard key={c.id} data={c} />
-        ))}
-      </ul>
+      <CompaniesList companies={companies} />
     </main>
   </div>
 );

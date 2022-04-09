@@ -1,6 +1,6 @@
 import casual from 'casual';
 
-import { numberOfTypes } from 'data/core';
+import { companyTypes } from 'data/core';
 
 import type { Company } from 'data/core';
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -12,7 +12,7 @@ const companies: Companies = Array.from({ length: total }).map((_, id) => ({
   id,
   name: casual.company_name,
   logoUrl: `https://robohash.org/${id}`,
-  type: casual.integer(0, numberOfTypes - 1),
+  type: casual.integer(0, companyTypes.length),
   address: {
     city: casual.city,
     country: casual.country,
