@@ -15,8 +15,12 @@ export const SearchBar: React.FC<Props> = ({ query, setQuery, placeholder }) => 
   );
 
   return (
-    <div>
-      <input type="text" value={query} onChange={handleChange} placeholder={placeholder} />
-    </div>
+    <input
+      type="search"
+      className="focus:outline-none w-full h-12 px-4 py-1 text-gray-800 border border-gray-400 rounded-md"
+      value={query}
+      onChange={handleChange}
+      placeholder={placeholder}
+    />
   );
 };

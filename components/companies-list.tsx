@@ -17,14 +17,16 @@ export const CompaniesList: React.FC<Props> = ({ companies }) => {
   const [selectedCompanyTypes, setCompanyTypes] = useState(allCompanyTypes);
 
   return (
-    <div>
-      <SearchBar query={searchQuery} setQuery={setSearchQuery} placeholder="Type company name" />
-      <CheckboxGroup
-        options={companyTypes}
-        selected={selectedCompanyTypes}
-        setSelected={setCompanyTypes}
-      />
-      <ul>
+    <div className="flex flex-col w-full h-screen max-w-lg px-4 mx-auto">
+      <div className="my-4">
+        <SearchBar query={searchQuery} setQuery={setSearchQuery} placeholder="Type company name" />
+        <CheckboxGroup
+          options={companyTypes}
+          selected={selectedCompanyTypes}
+          setSelected={setCompanyTypes}
+        />
+      </div>
+      <div className="-mt-2 overflow-y-auto">
         {companies
           .filter(
             ({ name, type }) =>
@@ -34,7 +36,7 @@ export const CompaniesList: React.FC<Props> = ({ companies }) => {
           .map(c => (
             <CompanyCard key={c.id} data={c} />
           ))}
-      </ul>
+      </div>
     </div>
   );
 };
